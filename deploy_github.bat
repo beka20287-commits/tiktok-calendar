@@ -1,7 +1,7 @@
 @echo off
 SET ZIP_NAME=tiktok-calendar.zip
 SET REPO_URL=https://github.com/beka20287-commits/tiktok-calendar.git
-SET BRANCH=main
+SET BRANCH=master
 
 echo.
 echo ===========================================
