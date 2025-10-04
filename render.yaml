@@ -1,1 +1,32 @@
-services: 
+services:
+  - type: web
+    name: tiktok-backend
+    env: docker
+    plan: free
+    dockerfilePath: ./backend/Dockerfile
+    buildContext: ./backend
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: tiktok-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: NODE_ENV
+        value: production
+    autoDeploy: true
+
+  - type: web
+    name: tiktok-frontend
+    env: docker
+    plan: free
+    dockerfilePath: ./frontend/Dockerfile
+    buildContext: ./frontend
+    envVars:
+      - key: NODE_ENV
+        value: production
+    autoDeploy: true
+
+databases:
+  - name: tiktok-db
+    plan: free
